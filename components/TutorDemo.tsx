@@ -8,6 +8,7 @@ type Message = {
 };
 
 export default function TutorDemo() {
+
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ export default function TutorDemo() {
 
     const userMessage: Message = {
       role: "user",
-      content: question,
+      content: question
     };
 
     const newMessages: Message[] = [...messages, userMessage];
@@ -29,71 +30,87 @@ export default function TutorDemo() {
     setLoading(true);
 
     try {
+
       const res = await fetch(
         "https://primeros-pasos-n8n-curso-n8n.hbtrfg.easypanel.host/webhook/preguntar-curso",
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             question,
-            course: "n8n",
-          }),
-        },
+            course: "n8n"
+          })
+        }
       );
 
       const data = await res.json();
-      console.log("RESPUESTA WEBHOOK:", data);
 
       const assistantMessage: Message = {
         role: "assistant",
-       content: data.respuesta || data.answer || data.response || "No se pudo generar respuesta."
+        content:
+          data.respuesta ||
+          data.answer ||
+          data.response ||
+          "No se pudo generar respuesta."
       };
 
       setMessages([...newMessages, assistantMessage]);
+
     } catch {
+
       const errorMessage: Message = {
         role: "assistant",
-        content: "Error al consultar el tutor.",
+        content: "Error al consultar el tutor."
       };
 
       setMessages([...newMessages, errorMessage]);
+
     }
 
     setLoading(false);
   };
 
   return (
+
     <section id="demo" className="section">
-      <div className="section-inner">
+
+      <div className="section-inner px-3">
+
         <p className="text-sm uppercase tracking-widest text-[var(--accent)] mb-4 text-center">
           Demo
         </p>
 
-        <h2 className="text-3xl font-bold text-center mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
           Tutor IA del curso
         </h2>
 
-        <p className="text-[var(--text-dim)] text-center max-w-2xl mx-auto mb-10">
+        <p className="text-[var(--text-dim)] text-center max-w-xl md:max-w-2xl mx-auto mb-10">
           Pregunta algo relacionado con el contenido del curso y el tutor IA
-          responderá utilizando el conocimiento generado automáticamente a
-          partir de las clases.
+          responderá utilizando el conocimiento generado automáticamente
+          a partir de las clases.
         </p>
 
-        <div className="max-w-2xl mx-auto bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-6">
-          <div className="space-y-4 mb-6 max-h-[350px] overflow-y-auto">
+        {/* CHAT */}
+
+        <div className="max-w-xl md:max-w-2xl mx-auto bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-4 md:p-6">
+
+          <div className="space-y-4 mb-6 max-h-[300px] md:max-h-[350px] overflow-y-auto">
+
             {messages.map((msg, index) => (
+
               <div
                 key={index}
-                className={`p-3 rounded-lg text-sm ${
+                className={`p-3 rounded-lg text-sm leading-relaxed break-words ${
                   msg.role === "user"
-                    ? "bg-[var(--accent)] text-white ml-auto max-w-[75%]"
-                    : "bg-gray-100 text-black max-w-[75%]"
+                    ? "bg-[var(--accent)] text-white ml-auto max-w-[80%]"
+                    : "bg-gray-100 text-black max-w-[85%]"
                 }`}
               >
                 {msg.content}
               </div>
+
             ))}
 
             {loading && (
@@ -101,9 +118,16 @@ export default function TutorDemo() {
                 Analizando contenido del curso...
               </div>
             )}
+
           </div>
 
-          <form onSubmit={askTutor} className="flex gap-3">
+          {/* INPUT */}
+
+          <form
+            onSubmit={askTutor}
+            className="flex flex-col sm:flex-row gap-3"
+          >
+
             <input
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
@@ -117,14 +141,19 @@ export default function TutorDemo() {
             >
               Preguntar
             </button>
+
           </form>
 
-          <div className="text-xs text-[var(--text-dim)] mt-3 text-center">
-            Ejemplos: ¿Qué es n8n?, ¿Cuál es la diferencia entre cloud y
-            self-hosted?
+          {/* EJEMPLOS */}
+
+          <div className="text-xs text-[var(--text-dim)] mt-3 text-center px-2">
+            Ejemplos: ¿Qué es n8n?, ¿Cuál es la diferencia entre cloud y self-hosted?
           </div>
+
         </div>
+
       </div>
+
     </section>
   );
 }

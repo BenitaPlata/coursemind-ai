@@ -37,14 +37,14 @@ export default function AutomationDemo() {
       <div className="section-inner">
 
         <p className="text-sm uppercase tracking-widest text-[var(--accent)] mb-4 text-center">
-          Automatización del curso
+          Automatización con IA
         </p>
 
-        <h2 className="text-3xl font-bold text-center mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 px-2">
           De una clase grabada a conocimiento estructurado
         </h2>
 
-        <p className="text-[var(--text-dim)] text-center max-w-2xl mx-auto mb-10">
+        <p className="text-[var(--text-dim)] text-center max-w-xl md:max-w-2xl mx-auto mb-10 px-3">
           El sistema procesa automáticamente una clase del curso,
           genera contenido educativo estructurado y crea material reutilizable.
         </p>
@@ -60,9 +60,9 @@ export default function AutomationDemo() {
 
         </div>
 
-        {/* barra pipeline */}
+        {/* pipeline */}
 
-        <div className="flex justify-center items-center gap-3 text-sm mb-12 flex-wrap">
+        <div className="flex flex-wrap justify-center items-center gap-3 text-xs sm:text-sm mb-12 px-2">
 
           <span className={`${step >= 1 ? "text-[var(--accent)] font-medium" : "text-[var(--text-dim)]"}`}>
             Video
@@ -94,79 +94,101 @@ export default function AutomationDemo() {
 
         </div>
 
-        <div className="space-y-6 max-w-2xl mx-auto">
+        {/* cards */}
+
+        <div className="space-y-6 max-w-xl md:max-w-2xl mx-auto px-3">
 
           {step >= 1 && (
             <div className="card-hover p-6 flex gap-4">
-              <Video className="text-[var(--accent)]" />
+
+              <Video className="text-[var(--accent)] shrink-0" />
+
               <div>
                 <p className="font-medium mb-2">
                   Clase procesada
                 </p>
+
                 <p className="text-sm text-[var(--text-dim)]">
                   Introducción a N8n: Automatización de Flujos de Trabajo
                 </p>
               </div>
+
             </div>
           )}
 
           {step >= 2 && (
             <div className="card-hover p-6 flex gap-4">
-              <Mic className="text-[var(--accent)]" />
+
+              <Mic className="text-[var(--accent)] shrink-0" />
+
               <div>
                 <p className="font-medium mb-2">
                   Transcripción
                 </p>
+
                 <p className="text-sm text-[var(--text-dim)]">
                   n8n es una herramienta de automatización que permite crear
-                  integraciones entre aplicaciones mediante workflows basados
-                  en nodos...
+                  integraciones entre aplicaciones mediante workflows
+                  basados en nodos...
                 </p>
               </div>
+
             </div>
           )}
 
           {step >= 3 && (
             <div className="card-hover p-6 flex gap-4">
-              <Brain className="text-[var(--accent)]" />
+
+              <Brain className="text-[var(--accent)] shrink-0" />
+
               <div>
                 <p className="font-medium mb-2">
                   Contenido educativo generado
                 </p>
+
                 <p className="text-sm text-[var(--text-dim)]">
                   Idea principal: N8n permite automatizar flujos de trabajo
                   conectando aplicaciones mediante nodos sin necesidad de
                   programación extensa.
                 </p>
               </div>
+
             </div>
           )}
 
           {step >= 4 && (
             <div className="card-hover p-6 flex gap-4">
-              <FileText className="text-[var(--accent)]" />
+
+              <FileText className="text-[var(--accent)] shrink-0" />
+
               <div>
+
                 <p className="font-medium mb-2">
                   Conceptos clave
                 </p>
+
                 <ul className="text-sm text-[var(--text-dim)] list-disc ml-5">
+
                   <li>N8n</li>
                   <li>Workflows</li>
                   <li>Integración de aplicaciones</li>
                   <li>Self-hosted vs Cloud</li>
                   <li>Automatización de procesos</li>
+
                 </ul>
+
               </div>
+
             </div>
           )}
 
         </div>
 
-        {/* RESULTADO FINAL */}
+        {/* resultado final */}
 
         {step >= 5 && (
 
-          <div className="mt-12 card-hover p-8 flex flex-col items-center text-center">
+          <div className="mt-12 card-hover p-6 md:p-8 flex flex-col items-center text-center">
 
             <Database className="text-[var(--accent)] mb-3" size={28} />
 
@@ -181,7 +203,7 @@ export default function AutomationDemo() {
               ✔ Newsletter
             </p>
 
-            {/* barra generación */}
+            {/* barra */}
 
             <div className="w-full max-w-md mb-8">
 
@@ -195,13 +217,13 @@ export default function AutomationDemo() {
 
             </div>
 
-            {/* preview pdf */}
+            {/* pdf */}
 
             <div className="w-full max-w-4xl border border-[var(--border)] rounded-xl overflow-hidden shadow-sm">
 
               <iframe
                 src="/ejemplo-n8n.pdf"
-                className="w-full h-[650px]"
+                className="w-full h-[500px] md:h-[650px]"
               />
 
             </div>

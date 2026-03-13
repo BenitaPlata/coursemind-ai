@@ -9,7 +9,7 @@ export default function Navbar() {
           CourseMind AI
         </a>
 
-        <div className="flex gap-6 text-sm">
+        <div className="flex gap-6 text-sm flex-wrap justify-end">
 
           <a href="#automation-demo" className="hover:text-[var(--accent)]">
             Automatización
