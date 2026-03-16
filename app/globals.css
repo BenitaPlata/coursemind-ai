@@ -512,8 +512,8 @@ body {
 
 .bg-orb-1 {
 
-  width: 400px;
-  height: 400px;
+  width: 700px;
+  height: 700px;
 
   background: rgba(183,110,121,0.25);
 
@@ -526,8 +526,8 @@ body {
 
 .bg-orb-2 {
 
-  width: 350px;
-  height: 350px;
+  width: 650px;
+  height: 650px;
 
   background: rgba(217,154,164,0.2);
 
@@ -579,14 +579,15 @@ body {
 .bg-grid {
 
   position: absolute;
-
   inset: 0;
 
   background-image:
-    linear-gradient(rgba(183,110,121,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(183,110,121,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(183,110,121,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183,110,121,0.015) 1px, transparent 1px);
 
-  background-size: 120px 120px;
+  background-size: 180px 180px;
+
+  opacity: 0.12;
 
   mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
 
