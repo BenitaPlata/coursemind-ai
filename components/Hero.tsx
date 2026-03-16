@@ -2,18 +2,28 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-20"
     >
 
       {/* FONDO ANIMADO */}
 
       <div className="hero-bg">
 
+        {/* glow principal */}
         <div className="hero-glow hero-glow-1"></div>
-
         <div className="hero-glow hero-glow-2"></div>
 
+        {/* partículas */}
         <div className="hero-particles"></div>
+
+        {/* círculos vivos */}
+        <div className="hero-orb hero-orb-1"></div>
+        <div className="hero-orb hero-orb-2"></div>
+        <div className="hero-orb hero-orb-3"></div>
+
+        {/* anillos rotando */}
+        <div className="hero-ring hero-ring-1"></div>
+        <div className="hero-ring hero-ring-2"></div>
 
       </div>
 

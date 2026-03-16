@@ -21,9 +21,8 @@
 
   /* rosa viejo */
 
-
   --accent: #b76e79;
---accent-soft: #d99aa4;
+  --accent-soft: #d99aa4;
 
   /* glow */
   --accent-glow: rgba(192,120,150,0.18);
@@ -75,15 +74,13 @@ body {
   margin: 0 auto;
 }
 
-/* CARD INTERACTIVA */
-
+/* ===== CARD INTERACTIVA ===== */
 
 .card-hover {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 16px;
-  transition: all 0.25s ease;
-    transition:
+  transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
     border-color 0.25s ease;
@@ -117,7 +114,7 @@ body {
   opacity: 1;
 }
 
-/* animación flechas pipeline */
+/* ===== ANIMACIÓN FLECHAS PIPELINE ===== */
 
 @keyframes arrowMove {
   0% {
@@ -138,7 +135,7 @@ body {
   animation: arrowMove 1.8s ease-in-out infinite;
 }
 
-/* animaciones fondo hero */
+/* ===== ANIMACIONES HERO ===== */
 
 @keyframes floatSlow {
   0% {
@@ -181,7 +178,41 @@ body {
   z-index: 0;
 }
 
-/* glow principal */
+/* ===== SPOTLIGHT CENTRAL ===== */
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.65) 0%,
+    rgba(255,255,255,0.35) 35%,
+    transparent 65%
+  );
+
+  pointer-events: none;
+}
+
+/* ===== GRID TECNOLÓGICA ===== */
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(183,110,121,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183,110,121,0.05) 1px, transparent 1px);
+
+  background-size: 120px 120px;
+
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+
+  pointer-events: none;
+}
+
+/* ===== GLOW HERO ===== */
 
 .hero-glow {
   position: absolute;
@@ -206,7 +237,7 @@ body {
   animation: glowMove2 18s ease-in-out infinite;
 }
 
-/* partículas */
+/* ===== PARTÍCULAS ===== */
 
 .hero-particles {
   position: absolute;
@@ -214,17 +245,87 @@ body {
   pointer-events: none;
 
   background-image:
-    radial-gradient(rgba(183,110,121,0.6) 2px, transparent 2px),
-    radial-gradient(rgba(183,110,121,0.4) 2px, transparent 2px);
+    radial-gradient(rgba(183,110,121,0.5) 2px, transparent 2px),
+    radial-gradient(rgba(183,110,121,0.35) 2px, transparent 2px);
 
-  background-size: 80px 80px, 120px 120px;
+  background-size: 90px 90px, 140px 140px;
 
-  animation: particlesMove 40s linear infinite;
+  animation: particlesMove 45s linear infinite;
 
-  opacity: 0.6;
+  opacity: 0.35;
 }
 
-/* animaciones */
+/* ===== ORBS FLOTANTES ===== */
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.hero-orb-1 {
+  width: 260px;
+  height: 260px;
+  background: rgba(183,110,121,0.35);
+  top: 20%;
+  left: 10%;
+  animation: orbFloat1 18s ease-in-out infinite;
+}
+
+.hero-orb-2 {
+  width: 320px;
+  height: 320px;
+  background: rgba(217,154,164,0.25);
+  bottom: 10%;
+  right: 15%;
+  animation: orbFloat2 22s ease-in-out infinite;
+}
+
+.hero-orb-3 {
+  width: 200px;
+  height: 200px;
+  background: rgba(183,110,121,0.25);
+  top: 60%;
+  left: 40%;
+  animation: orbFloat3 20s ease-in-out infinite;
+}
+
+/* ===== ANILLOS ROTANDO ===== */
+
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(183,110,121,0.15);
+  pointer-events: none;
+}
+
+.hero-ring-1 {
+  width: 520px;
+  height: 520px;
+  top: 10%;
+  right: -150px;
+  animation: rotateSlow 40s linear infinite;
+}
+
+.hero-ring-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -120px;
+  left: -120px;
+  animation: rotateSlowReverse 55s linear infinite;
+}
+
+.hero-ring::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  border: 1px dashed rgba(183,110,121,0.1);
+}
+
+/* ===== ANIMACIONES HERO ===== */
 
 @keyframes glowMove1 {
   0% { transform: translate(0,0); }
@@ -242,6 +343,36 @@ body {
   from { transform: translateY(0); }
   to { transform: translateY(-300px); }
 }
+
+@keyframes orbFloat1 {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.2) translateY(-40px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes orbFloat2 {
+  0% { transform: scale(1) translateX(0); }
+  50% { transform: scale(1.25) translateX(-50px); }
+  100% { transform: scale(1) translateX(0); }
+}
+
+@keyframes orbFloat3 {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.15) translateY(30px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateSlowReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* ===== PROGRESS BAR ===== */
 
 @keyframes progressLoad {
   0% { width: 0%; }
